@@ -1,6 +1,4 @@
 var KeyActions = {
-
-
   keyPressed: function (noteName) {
     AppDispatcher.dispatch({
       actionType: "KEY_PRESSED",

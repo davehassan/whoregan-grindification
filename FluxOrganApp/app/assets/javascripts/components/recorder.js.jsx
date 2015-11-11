@@ -12,6 +12,11 @@ var Recorder = React.createClass({
     this.state.track.play();
   },
 
+  saveRecording: function () {
+    TrackStore.add(this.state.track);
+    this.setState({track: new Track ({name: "untitled"})});
+  },
+
   toggleRecord: function () {
     this.setState({ isRecording: !this.state.isRecording });
     if (!this.state.isRecording) {
@@ -29,6 +34,7 @@ var Recorder = React.createClass({
       <div>
         <button onClick={this.toggleRecord}>{buttonText}</button>
         <button onClick={this.playBack}>Play Back</button>
+        <button onClick={this.saveRecording}> Save Recording </button>
       </div>
     );
   }
