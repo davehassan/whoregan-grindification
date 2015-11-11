@@ -40,3 +40,8 @@ body {
   width: 98px;
   height: 100%;
 }
+
+.pressed {
+  background: orange;
+
+}

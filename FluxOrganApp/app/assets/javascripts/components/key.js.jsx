@@ -1,10 +1,15 @@
 var Key = React.createClass({
 
+  getInitialState: function () {
+    return { pressed: false};
+  },
   handleKey: function () {
     if (KeyStore.all().indexOf(this.props.noteName) !== -1) {
       this.note.start();
+      this.setState({pressed: true});
     } else {
       this.note.stop();
+      this.setState({pressed: false});
     }
   },
 
@@ -18,7 +23,11 @@ var Key = React.createClass({
   },
 
   render: function () {
-    return <li className="noteKey"> </li>;
+    var className = "noteKey";
+    if (this.state.pressed) {
+      className += " pressed";
+    }
+    return <li className={className}> </li>;
   }
 
 
