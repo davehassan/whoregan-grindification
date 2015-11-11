@@ -4,12 +4,12 @@ var Recorder = React.createClass({
     return { isRecording: false, track: (new Track({name: name})) };
   },
 
-  componentDidMount: function () {},
-
-  componentWillUnmount: function () {},
-
   updateTrack: function () {
     this.state.track.addNotes(KeyStore.all());
+  },
+
+  playBack: function () {
+    this.state.track.play();
   },
 
   toggleRecord: function () {
@@ -28,6 +28,7 @@ var Recorder = React.createClass({
     return(
       <div>
         <button onClick={this.toggleRecord}>{buttonText}</button>
+        <button onClick={this.playBack}>Play Back</button>
       </div>
     );
   }
