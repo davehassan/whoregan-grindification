@@ -1,0 +1,42 @@
+h1, ul, div,
+li, body, html,
+a, p, span, img {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  background: transparent;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.organ {
+  display: block;
+  margin: 100px auto;
+  width: 500px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+.noteKey {
+  display: block;
+  float: left;
+  border: 1px solid black;
+  width: 98px;
+  height: 100%;
+}

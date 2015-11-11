@@ -1,7 +1,11 @@
 (function (root) {
   var _keyStore = [];
   var CHANGE_EVENT = "change";
-  var KeyStore = root.KeyStore = {};
+  var KeyStore = root.KeyStore = $.extend({}, EventEmitter.prototype);
+
+  KeyStore.all = function () {
+    return _keyStore.slice();
+  };
 
   KeyStore.addChangeHandler = function (callback) {
     this.on(CHANGE_EVENT, callback);
@@ -16,12 +20,16 @@
   };
 
   KeyStore.dispatcherId = AppDispatcher.register(function (payload) {
-    switch (payload.eventType) {
+    switch (payload.actionType) {
       case "KEY_PRESSED":
-        _keyStore.push(payload.noteName);
+        if (_keyStore.indexOf(payload.noteName) === -1){
+          _keyStore.push(payload.noteName);
+          KeyStore.changed();
+        }
         break;
       case "KEY_RELEASED":
         _keyStore.splice(_keyStore.indexOf(payload.noteName), 1);
+        KeyStore.changed();
         break;
     }
 
